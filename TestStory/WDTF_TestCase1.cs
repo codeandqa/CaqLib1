@@ -21,7 +21,7 @@ using System.Drawing;
 
 namespace WDTF
 {
-    public class WDTF_TestCase1 : TestCaseDefinition
+    public class WDTF_TestCase1 : ITestCaseDefinition
     {
         // private readonly IWebDriver driver;
 
@@ -30,16 +30,24 @@ namespace WDTF
         {
             //driver = testEnv.Driver;//This is going to be there in code.
             //loggerInfo.Instance.Message("Description of Test............");
-            
+
             // Start Coding here.
-            // Example:
-            CaqLib.OpenURL(testEnv.GetURL());
-            CaqLib.ClickElement(LocatorType.Id, "aChandeliers", "");
-            CaqLib.ClickElement(LocatorType.Id, "aCeilingLighting", "");
-            CaqLib.ClickElement(LocatorType.Id, "aLamps", "");
-            CaqLib.ClickElement(LocatorType.Id, "aWallLights", "");
-            
-           // loggerInfo.Instance.Message("End statement of Test..........");
+            // Example:'\
+            // open website
+            CaqLib.OpenURL("https://www.lampsplus.com/");
+            // click chandelier
+            CaqLib.ClickElement(LocatorType.Id, "aChandeliers", "click on chandeliers");
+            // click traditional
+            // Click specific one.
+            // click add to cart.
+            // Click to checkout now
+            // CLick Edit order
+            // Click remove
+            // click contniue shoppping.
+            // verify Traditional Chandeliers
+
+
+            // loggerInfo.Instance.Message("End statement of Test..........");
         }
 
     }

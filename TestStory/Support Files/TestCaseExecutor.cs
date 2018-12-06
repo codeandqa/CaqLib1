@@ -25,23 +25,23 @@ namespace WDTF
             CaqLib nav = new CaqLib(t);
             string browser = string.Empty;
             Program p = new Program();
-            List<TestCaseDefinition> input = new List<TestCaseDefinition>();
+            List<ITestCaseDefinition> input = new List<ITestCaseDefinition>();
             List<string> inputBrowser = new List<string>();
             string pattern = @"(\w+)(:)(\w+)";
-            argData argData = new argData();
-            List<argData> listOfArg = new List<argData>();
-            TestCaseDefinition[] testcaseList = WDTF.TestCaseList.TEST_CASES;
+            //ArgData argData = new ArgData();
+            List<ArgData> listOfArg = new List<ArgData>();
+            ITestCaseDefinition[] testcaseList = WDTF.TestCaseList.TEST_CASES;
             int m = 0;
             t.guid = string.Format("{0:GUIDyyyyMMddmmss}", DateTime.Now);
             
             if (args.Length == 0)
             {
-                foreach (TestCaseDefinition item in testcaseList)
+                foreach (ITestCaseDefinition item in testcaseList)
                 {
                     input.Add(item);
                     inputBrowser.Add(t.parentBrowser);
                 }
-                //browser = t.parentBrowser;
+                //Browser = t.parentBrowser;
             }
             else
             {
@@ -50,7 +50,7 @@ namespace WDTF
                     string validReg = Regex.Match(arg, pattern).Value;
                     if (validReg !="")
 
-                    foreach (TestCaseDefinition item in testcaseList)
+                    foreach (ITestCaseDefinition item in testcaseList)
                     {
                         string namespace_tc = item.ToString();
                         string tc = namespace_tc.Substring(namespace_tc.LastIndexOf('.') + 1);
@@ -85,13 +85,13 @@ namespace WDTF
             }
             if (input.Count == 0)
             {
-                foreach (TestCaseDefinition item in testcaseList)
+                foreach (ITestCaseDefinition item in testcaseList)
                 {
                     input.Add(item);
                     inputBrowser.Add(t.parentBrowser);
                 }
             }
-            foreach (TestCaseDefinition item in input)
+            foreach (ITestCaseDefinition item in input)
             {
                 t.parentBrowser = inputBrowser[m].ToLower();
                 m++;
@@ -112,14 +112,14 @@ namespace WDTF
             
         }
     }
-    public interface TestCaseDefinition
+    public interface ITestCaseDefinition
     {
         void ExecuteTest(TestEnvInfo driver);
     }
-    struct argData
+    struct ArgData
     {
-        private TestCaseDefinition t_testcaseDef;
-        public TestCaseDefinition testCases
+        private ITestCaseDefinition t_testcaseDef;
+        public ITestCaseDefinition TestCases
         {
             get
             {
@@ -131,7 +131,7 @@ namespace WDTF
             }
         }
         private string p_browser;
-        public string browser
+        public string Browser
         {
             get
             {

@@ -7,7 +7,7 @@ namespace WDTF
 {
     public class TestCaseList
     {
-        public static readonly TestCaseDefinition[] TEST_CASES = 
+        public static readonly ITestCaseDefinition[] TEST_CASES = 
         { 
            new WDTF_TestCase1()
         };
